@@ -1,0 +1,116 @@
+[
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "RegisterConfirmationAsync",
+    "RelativePath": "api/auth/confirm",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "ConfirmEmailAsync",
+    "RelativePath": "api/auth/confirm",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Auth.Application.DTOs.EmailConfirmationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "ResetPasswordAsync",
+    "RelativePath": "api/auth/reset",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Auth.Application.DTOs.ResetPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "SignInAsync",
+    "RelativePath": "api/auth/signin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Auth.Application.DTOs.SignInRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Auth.Application.DTOs.AuthenticationResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "SignOutAsync",
+    "RelativePath": "api/auth/signout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "SignUpAsync",
+    "RelativePath": "api/auth/signup",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Auth.Application.DTOs.SignUpRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Auth.Application.DTOs.AuthenticationResponse",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Auth.WebAPI.Controllers.AuthController",
+    "Method": "WhoAmI",
+    "RelativePath": "api/auth/whoami",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -1,0 +1,11 @@
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\bin\Debug\net8.0\Auth.Domain.deps.json
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\bin\Debug\net8.0\Auth.Domain.dll
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\bin\Debug\net8.0\Auth.Domain.pdb
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.AssemblyInfoInputs.cache
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.AssemblyInfo.cs
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.csproj.CoreCompileInputs.cache
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.dll
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\refint\Auth.Domain.dll
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\Auth.Domain.pdb
+C:\Users\mvide\source\repos\Auth.Backend\Auth.Domain\obj\Debug\net8.0\ref\Auth.Domain.dll

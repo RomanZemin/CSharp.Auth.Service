@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Gp7SH8iFacQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Backend.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\mvide\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.20.1\\microsoft.visualstudio.azure.containers.tools.targets.1.20.1.nupkg.sha512"
+  ],
+  "logs": []
+}
