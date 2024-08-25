@@ -1,11 +1,12 @@
 ﻿using Auth.Application.DTOs;
 using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
 
 namespace Auth.Application.Interfaces.Identity
 {
     public interface IAuthService
     {
-        Task<bool> SignInAsync(SignInRequest signInRequest);
+        Task<SignInResult> SignInAsync(SignInRequest signInRequest);
         Task SignOutAsync();
         Task<AuthenticationResponse> SignUpAsync(SignUpRequest signUpRequest);
         Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal user, string currentPassword, string newPassword);

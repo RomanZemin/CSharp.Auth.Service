@@ -31,12 +31,13 @@ namespace Auth.WebAPI.Controllers
             try
             {
                 // Authenticate user and generate authentication token
-                bool succeeded = await _authService.SignInAsync(request);
 
-                if (!succeeded)
+                Microsoft.AspNetCore.Identity.SignInResult response = await _authService.SignInAsync(request);
+
+                if (!response.Succeeded)
                 {
-                    // To do: display error messages
-                    return BadRequest();
+                    
+                    return BadRequest(new { reason = "Invalid login or password" });
                 }
 
                 return Ok();
@@ -57,7 +58,6 @@ namespace Auth.WebAPI.Controllers
 
                 if (response == null || !response.Succeeded)
                 {
-                    // To do: display error messages
                     return BadRequest(response.Errors);
                 }
 

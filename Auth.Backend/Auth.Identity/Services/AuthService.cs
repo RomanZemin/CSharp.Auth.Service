@@ -23,11 +23,11 @@ namespace Auth.Infrastructure.Identity.Services
             _signInManager = signInManager;
         }
 
-        public async Task<bool> SignInAsync(SignInRequest request)
+        public async Task<SignInResult> SignInAsync(SignInRequest request)
         {
             SignInResult signInResult = await _signInManager.PasswordSignInAsync(request.Email, request.Password, request.RememberMe, false);
             
-            return signInResult.Succeeded;
+            return signInResult;
         }
 
         public async Task SignOutAsync()
