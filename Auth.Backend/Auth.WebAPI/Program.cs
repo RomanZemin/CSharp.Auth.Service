@@ -21,7 +21,6 @@ namespace Auth.WebAPI.Controllers
             builder.Services.AddInfrastructureIdentityServices();
             builder.Services.AddInfrastructurePersistenceServices();
 
-            // Добавление ваших сервисов приложения
             builder.Services.AddApplicationServices(); // Новый метод расширения
 
             // Add mapping profiles

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LQ1lDRDZtuU=",
+  "dgSpecHash": "x5KxTqQbjwk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
+  "projectFilePath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mvide\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\mvide\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",

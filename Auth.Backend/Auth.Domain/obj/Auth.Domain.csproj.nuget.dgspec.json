@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj": {}
+    "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj": {
+    "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
         "projectName": "Auth.Domain",
-        "projectPath": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
+        "projectPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
         "packagesPath": "C:\\Users\\mvide\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\obj\\",
+        "outputPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

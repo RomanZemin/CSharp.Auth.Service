@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0eFXQo8awiM=",
+  "dgSpecHash": "f0SlBWwKqlk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\mvide\\source\\repos\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
+  "projectFilePath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Auth.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
