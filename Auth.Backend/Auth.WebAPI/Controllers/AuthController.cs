@@ -37,14 +37,14 @@ namespace Auth.WebAPI.Controllers
                 if (!response.Succeeded)
                 {
                     
-                    return BadRequest(new { reason = "Invalid login or password" });
+                    return BadRequest( new { reason = "Invalid login or password" } );
                 }
 
-                return Ok();
+                return Ok( new { message = "Sign in successful" } );
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { ex.Message } );
             }
         }
 
@@ -65,7 +65,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { ex.Message } );
             }
         }
 
@@ -95,7 +95,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { ex.Message } );
             }
         }
 
@@ -117,7 +117,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { ex.Message } );
             }
         }
 
@@ -133,7 +133,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, new { ex.Message } );
             }
         }
 
@@ -143,7 +143,7 @@ namespace Auth.WebAPI.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                return Ok(User.Identity.Name);
+                return Ok(new { User.Identity.Name } );
             }
             else
             {

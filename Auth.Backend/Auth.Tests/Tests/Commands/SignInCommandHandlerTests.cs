@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity;
 using Auth.Application.DTOs;
 using Auth.WebAPI.Tests.Controllers;
 using Moq;
@@ -12,8 +13,8 @@ namespace Auth.WebAPI.Tests.Commands
         {
             // Arrange
             var request = new SignInRequest { Email = "test@example.com", Password = "password" };
-            _mockAuthService.Setup(service => service.SignInAsync(request))
-                            .ReturnsAsync(true);
+            var signInResult = new Mock<Microsoft.AspNetCore.Identity.SignInResult>();
+            signInResult.SetupGet(result => result.Succeeded).Returns(true); //эту хуйню надо переписать
 
             // Act
             var result = await _controller.SignInAsync(request);
@@ -27,8 +28,9 @@ namespace Auth.WebAPI.Tests.Commands
         {
             // Arrange
             var request = new SignInRequest { Email = "test@example.com", Password = "wrongpassword" };
-            _mockAuthService.Setup(service => service.SignInAsync(request))
-                            .ReturnsAsync(false);
+
+            var signInResult = new Mock<Microsoft.AspNetCore.Identity.SignInResult>();
+            signInResult.SetupGet(result => result.Succeeded).Returns(true); // и эту хуйню тоже надо переписать
 
             // Act
             var result = await _controller.SignInAsync(request);

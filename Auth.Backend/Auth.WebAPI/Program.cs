@@ -27,6 +27,14 @@ namespace Auth.WebAPI.Controllers
             builder.Services.AddApplicationMappingProfile();
             builder.Services.AddInfrastructureIdentityMappingProfile();
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
+
             builder.Services.AddControllers();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -41,6 +49,8 @@ namespace Auth.WebAPI.Controllers
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+            
+            app.UseCors("AllowAllOrigins");
 
             app.UseHttpsRedirection();
             app.UseAuthorization();
