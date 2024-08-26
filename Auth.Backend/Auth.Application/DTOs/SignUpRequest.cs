@@ -16,5 +16,9 @@ namespace Auth.Application.DTOs
         [JsonPropertyName("password")]
         [Required]
         public string Password { get; set; }
+
+        [JsonPropertyName("RememberMe")]
+        [Required]
+        public bool RememberMe { get; set; }
     }
 }

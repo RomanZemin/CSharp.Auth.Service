@@ -26,7 +26,7 @@ namespace Auth.Infrastructure.Identity.Services
         public async Task<SignInResult> SignInAsync(SignInRequest request)
         {
             SignInResult signInResult = await _signInManager.PasswordSignInAsync(request.Email, request.Password, request.RememberMe, false);
-            
+            //Вот тут вытащить jwtw token, когда истекает и userid
             return signInResult;
         }
 
@@ -68,9 +68,16 @@ namespace Auth.Infrastructure.Identity.Services
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
 
+            SignInRequest requestToSignIn = new SignInRequest
+            {
+                Email = request.Email,
+                Password = request.Password,
+                RememberMe = true
+            };
+
             if (result.Succeeded)
             {
-                await _signInManager.SignInAsync(user, isPersistent: false);
+                await SignInAsync(requestToSignIn);
             }
 
             return result.ToAuthenticationResult();
