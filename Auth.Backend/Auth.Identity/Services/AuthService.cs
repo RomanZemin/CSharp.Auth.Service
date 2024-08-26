@@ -63,7 +63,7 @@ namespace Auth.Infrastructure.Identity.Services
             ApplicationUser user = new ApplicationUser
             {
                 Email = request.Email,
-                UserName = request.Email
+                UserName = request.UserName
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);

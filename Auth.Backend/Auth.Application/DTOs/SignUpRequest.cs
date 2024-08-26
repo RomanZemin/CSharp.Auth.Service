@@ -9,6 +9,10 @@ namespace Auth.Application.DTOs
         [Required]
         public string Email { get; set; }
 
+        [JsonPropertyName("Username")]
+        [Required]
+        public string UserName { get; set; }
+
         [JsonPropertyName("password")]
         [Required]
         public string Password { get; set; }
