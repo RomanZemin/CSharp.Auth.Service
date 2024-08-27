@@ -53,7 +53,7 @@ namespace Auth.Infrastructure.Identity.Services
         {
             ApplicationUser user = await _userManager.GetUserAsync(principal);
             IdentityResult result = await _userManager.ChangeEmailAsync(user, email, code);
-            return result.ToAuthenticationResult();
+            return result.ToAuthenticationResponse(null, user);
         }
 
         public async Task<bool> IsEmailConfirmedAsync(string email)
@@ -72,7 +72,7 @@ namespace Auth.Infrastructure.Identity.Services
         {
             ApplicationUser user = await _userManager.GetUserAsync(principal);
             IdentityResult result = await _userManager.ChangePasswordAsync(user, oldPassword, newPassword);
-            return result.ToAuthenticationResult();
+            return result.ToAuthenticationResponse(null, user);
         }
 
         public async Task<bool> HasPasswordAsync(ClaimsPrincipal principal)
@@ -103,14 +103,14 @@ namespace Auth.Infrastructure.Identity.Services
         {
             ApplicationUser user = await _userManager.GetUserAsync(principal);
             IdentityResult result = await _userManager.SetPhoneNumberAsync(user, phoneNumber);
-            return result.ToAuthenticationResult();
+            return result.ToAuthenticationResponse(null, user);
         }
 
         public async Task<AuthenticationResponse> AddPasswordAsync(ClaimsPrincipal principal, string newPassword)
         {
             ApplicationUser user = await _userManager.GetUserAsync(principal);
             IdentityResult result = await _userManager.AddPasswordAsync(user, newPassword);
-            return result.ToAuthenticationResult();
+            return result.ToAuthenticationResponse(null, user);
         }
     }
 }

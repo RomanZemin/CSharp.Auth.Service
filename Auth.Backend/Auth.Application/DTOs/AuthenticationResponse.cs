@@ -1,4 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using System;
+using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Auth.Application.DTOs
 {
@@ -6,8 +8,35 @@ namespace Auth.Application.DTOs
     {
         [JsonPropertyName("succeeded")]
         public bool Succeeded { get; set; }
-        
+
         [JsonPropertyName("errors")]
-        public Dictionary<string, string> Errors { get; set; }
+        public Dictionary<string, string>? Errors { get; set; }
+
+        [JsonPropertyName("data")]
+        public UserData? Data { get; set; }
+
+        [JsonPropertyName("access")]
+        public AccessToken? Access { get; set; }
+    }
+
+    public class UserData
+    {
+        [JsonPropertyName("userId")]
+        public string UserId { get; set; }
+
+        [JsonPropertyName("FirstName")]
+        public string FirstName { get; set; }
+
+        [JsonPropertyName("LastName")]
+        public string LastName { get; set; }
+    }
+
+    public class AccessToken
+    {
+        [JsonPropertyName("jwt")]
+        public string Jwt { get; set; }
+
+        [JsonPropertyName("expiresAt")]
+        public string ExpiresAt { get; set; }
     }
 }

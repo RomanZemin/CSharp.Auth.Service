@@ -10,7 +10,7 @@ namespace Auth.Application.DTOs
         [JsonPropertyName("password")]
         public string Password { get; set; }
 
-        [JsonPropertyName("rememberMe")]
+        [JsonPropertyName("RememberMe")]
         public bool RememberMe { get; set; }
     }
 }
