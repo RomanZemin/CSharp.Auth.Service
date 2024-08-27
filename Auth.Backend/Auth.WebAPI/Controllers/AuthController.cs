@@ -1,9 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Auth.Application.DTOs;
 using Auth.Application.Interfaces.Identity;
-using Auth.Infrastructure.Identity.Services;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Text;
 
 namespace Auth.WebAPI.Controllers
 {
