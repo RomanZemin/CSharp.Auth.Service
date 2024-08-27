@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{FD7E17D9-D1F6-4840-8F0A-A7F39F965CAF}|Auth.WebAPI\\Auth.WebAPI.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FD7E17D9-D1F6-4840-8F0A-A7F39F965CAF}|Auth.WebAPI\\Auth.WebAPI.csproj|solutionrelative:auth.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.identity\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|solutionrelative:auth.identity\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.application\\dtos\\signinrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|solutionrelative:auth.application\\dtos\\signinrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{FD7E17D9-D1F6-4840-8F0A-A7F39F965CAF}|Auth.WebAPI\\Auth.WebAPI.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{FD7E17D9-D1F6-4840-8F0A-A7F39F965CAF}|Auth.WebAPI\\Auth.WebAPI.csproj|solutionrelative:auth.webapi\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.application\\dtos\\authenticationresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Document",
@@ -40,7 +40,7 @@
               "RelativeDocumentMoniker": "Auth.Application\\DTOs\\AuthenticationResponse.cs",
               "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\DTOs\\AuthenticationResponse.cs",
               "RelativeToolTip": "Auth.Application\\DTOs\\AuthenticationResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T07:05:19.414Z",
               "IsPinned": true,
@@ -76,7 +76,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SignInRequest.cs",
               "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\DTOs\\SignInRequest.cs",
               "RelativeDocumentMoniker": "Auth.Application\\DTOs\\SignInRequest.cs",
@@ -89,26 +89,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Auth.Identity\\Services\\AuthService.cs",
               "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\AuthService.cs",
               "RelativeToolTip": "Auth.Identity\\Services\\AuthService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAAD4AAAATAAAAAAAAAA==",
+              "ViewState": "AgIAADIAAAAAAAAAAAAcwFEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T06:32:54.42Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Auth.WebAPI\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Auth.WebAPI\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAiwDgAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAADwvz4AAACgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-26T06:56:42.96Z",
               "EditorCaption": ""
