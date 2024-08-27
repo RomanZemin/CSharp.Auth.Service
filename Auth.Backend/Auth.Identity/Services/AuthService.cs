@@ -76,7 +76,7 @@ namespace Auth.Infrastructure.Identity.Services
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
 
-            if (result.Succeeded) // if Create user => Success
+            if (result.Succeeded) // if Creating user is successful
             {
                 // Perform auto sign-in upon successful registration
                 var signInRequest = new SignInRequest

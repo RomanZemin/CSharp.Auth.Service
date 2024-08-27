@@ -134,7 +134,6 @@ namespace Auth.WebAPI.Controllers
             }
         }
 
-        // GET: api/auth/whoami
         [HttpGet("whoami")]
         public IActionResult WhoAmI()
         {
