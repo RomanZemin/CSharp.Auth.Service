@@ -29,15 +29,15 @@ namespace Auth.WebAPI.Controllers
             {
                 // Authenticate user and generate authentication token
 
-                Microsoft.AspNetCore.Identity.SignInResult response = await _authService.SignInAsync(request);
+                AuthenticationResponse response = await _authService.SignInAsync(request);
 
                 if (!response.Succeeded)
                 {
                     
-                    return BadRequest( new { reason = "Invalid login or password" } );
+                    return BadRequest(response?.Errors);
                 }
 
-                return Ok( new { message = "Sign in successful" } );
+                return Ok(response);
             }
             catch (Exception ex)
             {
@@ -72,7 +72,7 @@ namespace Auth.WebAPI.Controllers
             // Log out user
             await _authService.SignOutAsync();
 
-            return NoContent();
+            return Ok();
         }
 
         [HttpPost("reset")]
@@ -85,7 +85,7 @@ namespace Auth.WebAPI.Controllers
 
                 if (response == null || !response.Succeeded)
                 {
-                    return BadRequest();
+                    return BadRequest(response?.Errors);
                 }
 
                 return NoContent();

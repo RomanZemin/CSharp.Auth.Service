@@ -6,7 +6,7 @@ namespace Auth.Application.Interfaces.Identity
 {
     public interface IAuthService
     {
-        Task<SignInResult> SignInAsync(SignInRequest signInRequest);
+        Task<AuthenticationResponse> SignInAsync(SignInRequest signInRequest);
         Task SignOutAsync();
         Task<AuthenticationResponse> SignUpAsync(SignUpRequest signUpRequest);
         Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal user, string currentPassword, string newPassword);

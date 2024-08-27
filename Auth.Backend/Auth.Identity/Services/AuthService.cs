@@ -7,6 +7,8 @@ using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Helpers;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Auth.Infrastructure.Identity.Services
 {
@@ -16,18 +18,26 @@ namespace Auth.Infrastructure.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AuthService(IMapper mapper, UserManager<ApplicationUser> UserManager, SignInManager<ApplicationUser> signInManager)
+        public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _mapper = mapper;
-            _userManager = UserManager;
+            _userManager = userManager;
             _signInManager = signInManager;
         }
 
-        public async Task<SignInResult> SignInAsync(SignInRequest request)
+        public async Task<AuthenticationResponse> SignInAsync(SignInRequest request)
         {
+            // Perform the sign-in operation
             SignInResult signInResult = await _signInManager.PasswordSignInAsync(request.Email, request.Password, request.RememberMe, false);
-            //Вот тут вытащить jwtw token, когда истекает и userid
-            return signInResult;
+
+            // Retrieve the user information after the sign-in attempt
+            ApplicationUser user = await _userManager.FindByEmailAsync(request.Email);
+
+            // Create a dummy IdentityResult since we don't have one from SignInManager
+            var identityResult = new IdentityResult();
+
+            // Generate the AuthenticationResponse using the combined method
+            return identityResult.ToAuthenticationResponse(signInResult, user);
         }
 
         public async Task SignOutAsync()
@@ -68,37 +78,42 @@ namespace Auth.Infrastructure.Identity.Services
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
 
-            SignInRequest requestToSignIn = new SignInRequest
-            {
-                Email = request.Email,
-                Password = request.Password,
-                RememberMe = true
-            };
-
             if (result.Succeeded)
             {
-                await SignInAsync(requestToSignIn);
+                // Perform auto sign-in upon successful registration
+                var signInRequest = new SignInRequest
+                {
+                    Email = request.Email,
+                    Password = request.Password,
+                    RememberMe = true
+                };
+
+                SignInResult signInResult = await _signInManager.PasswordSignInAsync(signInRequest.Email, signInRequest.Password, signInRequest.RememberMe, false);
+
+                // Use the combined ToAuthenticationResponse method
+                return result.ToAuthenticationResponse(signInResult, user);
             }
 
-            return result.ToAuthenticationResult();
+            // If sign-up fails, return result with the error messages
+            return result.ToAuthenticationResponse(null, null);
         }
 
         public async Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal principal, string currentPassword, string newPassword)
         {
             ApplicationUser user = await _userManager.GetUserAsync(principal);
-            
+
             if (user == null)
             {
-                return new AuthenticationResponse()
+                return new AuthenticationResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
 
             IdentityResult result = await _userManager.ChangePasswordAsync(user, currentPassword, newPassword);
-            
-            return result.ToAuthenticationResult();
+
+            return result.ToAuthenticationResponse(null, null);
         }
 
         public async Task<AuthenticationResponse> ResetPasswordAsync(ResetPasswordRequest request)
@@ -107,16 +122,16 @@ namespace Auth.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                return new AuthenticationResponse()
+                return new AuthenticationResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
-            
+
             IdentityResult result = await _userManager.ResetPasswordAsync(user, Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(request.Token)), request.NewPassword);
-            
-            return result.ToAuthenticationResult();
+
+            return result.ToAuthenticationResponse(null, null);
         }
 
         public async Task<TokenResponse> GeneratePasswordResetTokenAsync(string email)
@@ -125,16 +140,16 @@ namespace Auth.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                return new TokenResponse()
+                return new TokenResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
 
             string token = await _userManager.GeneratePasswordResetTokenAsync(user);
 
-            return new TokenResponse()
+            return new TokenResponse
             {
                 Succeeded = true,
                 Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token))
@@ -147,16 +162,16 @@ namespace Auth.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                return new TokenResponse()
+                return new TokenResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
 
             string code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            return new TokenResponse()
+            return new TokenResponse
             {
                 Succeeded = true,
                 UserId = user.Id,
@@ -170,18 +185,18 @@ namespace Auth.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                return new AuthenticationResponse()
+                return new AuthenticationResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
-            
+
             string token = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(request.Token));
-            
+
             IdentityResult result = await _userManager.ConfirmEmailAsync(user, token);
-            
-            return result.ToAuthenticationResult();
+
+            return result.ToAuthenticationResponse(null, null);
         }
 
         public async Task RefreshSignInAsync(ClaimsPrincipal principal)
@@ -200,16 +215,16 @@ namespace Auth.Infrastructure.Identity.Services
 
             if (user == null)
             {
-                return new TokenResponse()
+                return new TokenResponse
                 {
                     Succeeded = false,
-                    Errors = new Dictionary<string, string>() { { string.Empty, "Invalid request." } }
+                    Errors = new Dictionary<string, string> { { string.Empty, "Invalid request." } }
                 };
             }
 
             string token = await _userManager.GenerateChangeEmailTokenAsync(user, newEmail);
-            
-            return new TokenResponse()
+
+            return new TokenResponse
             {
                 Succeeded = true,
                 Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token)),
