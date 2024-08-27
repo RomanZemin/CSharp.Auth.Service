@@ -7,8 +7,6 @@ using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Helpers;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Auth.Infrastructure.Identity.Services
 {
@@ -78,7 +76,7 @@ namespace Auth.Infrastructure.Identity.Services
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
 
-            if (result.Succeeded)
+            if (result.Succeeded) // if Create user => Success
             {
                 // Perform auto sign-in upon successful registration
                 var signInRequest = new SignInRequest
@@ -88,14 +86,14 @@ namespace Auth.Infrastructure.Identity.Services
                     RememberMe = true
                 };
 
-                SignInResult signInResult = await _signInManager.PasswordSignInAsync(signInRequest.Email, signInRequest.Password, signInRequest.RememberMe, false);
+                AuthenticationResponse signInResult = await SignInAsync(signInRequest); //sign into user
 
-                // Use the combined ToAuthenticationResponse method
-                return result.ToAuthenticationResponse(signInResult, user);
+                return signInResult;
             }
 
             // If sign-up fails, return result with the error messages
             return result.ToAuthenticationResponse(null, null);
+
         }
 
         public async Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal principal, string currentPassword, string newPassword)
