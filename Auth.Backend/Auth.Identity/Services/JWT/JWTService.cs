@@ -10,7 +10,7 @@ namespace Auth.Infrastructure.Identity.Services.JWT
     public class JWTService
     {
         private const string SecretKey = "881d43375578e3020726f4d36a5e779d40d3f972e1f3000090567237bca693bb61e4a339df26d38e98561ce5ed8b82f50d4e299a08ee07638c3a197c6c97f7dc";
-        private const string Issuer = "WebMonsters"; //Издателя
+        private const string Issuer = "WebMonsters"; //Издателель
         private const string Audience = "http://localhost:5250/api";
         private static readonly ConcurrentDictionary<string, string> _refreshTokens = new ConcurrentDictionary<string, string>();
 
