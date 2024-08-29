@@ -109,3 +109,8 @@ C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\obj\Deb
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\obj\Debug\net8.0\Auth.WebAPI.pdb
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\obj\Debug\net8.0\Auth.WebAPI.genruntimeconfig.cache
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\obj\Debug\net8.0\ref\Auth.WebAPI.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.WebAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
