@@ -24,7 +24,7 @@ namespace Auth.Infrastructure.Identity.Services.JWT
                 new Claim(JwtRegisteredClaimNames.Sub, user.Id),
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()), //Время создания токена
+                new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds().ToString(), ClaimValueTypes.Integer64), // Unix timestamp
                 new Claim("userId", user.Id.ToString())
             };
 
@@ -32,7 +32,7 @@ namespace Auth.Infrastructure.Identity.Services.JWT
                 issuer: Issuer,
                 audience: Audience,
                 claims: claims,
-                expires: DateTime.UtcNow.AddMinutes(15), // Время жизни токена 15 минут
+                expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
@@ -54,8 +54,16 @@ namespace Auth.Infrastructure.Identity.Services.JWT
                 // Удаляем использованный refreshToken из хранилища
                 _refreshTokens.TryRemove(refreshToken, out _);
 
-                // Генерируем новый access token
-                return GenerateJwtToken(user);
+                // Генерируем новый JWT токен
+                var newJwtToken = GenerateJwtToken(user);
+
+                // Генерируем новый refreshToken и сохраняем его в хранилище
+                var newRefreshToken = GenerateRefreshToken();
+                _refreshTokens[newRefreshToken] = newRefreshToken;
+
+                Console.WriteLine($"Generated new Refresh Token: {newRefreshToken}");
+
+                return newJwtToken;
             }
             else
             {
@@ -74,19 +82,32 @@ namespace Auth.Infrastructure.Identity.Services.JWT
                 {
                     ValidateIssuerSigningKey = true,
                     IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false,
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidIssuer = Issuer,
+                    ValidAudience = Audience,
                     ClockSkew = TimeSpan.Zero // Убирает задержку времени между сервером и клиентом
                 }, out SecurityToken validatedToken);
 
+                // Проверка срока действия токена
+                var jwtToken = validatedToken as JwtSecurityToken;
+                if (jwtToken == null || !jwtToken.Header.Alg.Equals(SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
+                {
+                    return false;
+                }
+
                 return true;
             }
-            catch
+            catch (SecurityTokenExpiredException)
             {
-                // Токен невалиден (например, истек или подделан)
+                Console.WriteLine("Token has expired");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Token validation failed: {ex.Message}");
                 return false;
             }
         }
-
     }
 }
