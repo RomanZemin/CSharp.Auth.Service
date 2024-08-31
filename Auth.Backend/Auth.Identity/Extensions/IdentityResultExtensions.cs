@@ -55,8 +55,9 @@ namespace Auth.Infrastructure.Identity.Helpers
                     // Generate JWT token and expiration date
                     response.Access = new AccessToken
                     {
-                        Jwt = JWTService.GenerateJwtToken(user), // Replace with your actual JWT generation logic
-                        ExpiresAt = DateTime.UtcNow.AddHours(1).ToString("o") // Example expiration time in ISO 8601 format
+                        Refresh_Token = user.Refresh_Token,
+                        Jwt = user.JWT_Token, // Replace with your actual JWT generation logic
+                        ExpiresAt = user.Expires_At // Example expiration time in ISO 8601 format
                     };
                 }
             }
