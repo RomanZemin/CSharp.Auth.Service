@@ -92,7 +92,7 @@ namespace Auth.Infrastructure.Identity.Services
             }
 
             // If sign-up fails, return result with the error messages
-            return result.ToAuthenticationResponse(null, null);
+            return result.ToAuthenticationResponse(null, user);
 
         }
 

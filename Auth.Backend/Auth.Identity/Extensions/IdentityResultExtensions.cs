@@ -7,8 +7,6 @@ namespace Auth.Infrastructure.Identity.Helpers
 {
     public static class IdentityResultExtensions
     {
-        private static readonly JWTService JWT_Service = new JWTService(); // Assuming a default constructor or provide as needed
-
         public static AuthenticationResponse ToAuthenticationResponse(this IdentityResult identityResult, SignInResult signInResult, ApplicationUser? user)
         {
             // Initialize response based on IdentityResult
@@ -57,7 +55,7 @@ namespace Auth.Infrastructure.Identity.Helpers
                     // Generate JWT token and expiration date
                     response.Access = new AccessToken
                     {
-                        Jwt = JWT_Service.GenerateJwtToken(user), // Replace with your actual JWT generation logic
+                        Jwt = JWTService.GenerateJwtToken(user), // Replace with your actual JWT generation logic
                         ExpiresAt = DateTime.UtcNow.AddHours(1).ToString("o") // Example expiration time in ISO 8601 format
                     };
                 }
