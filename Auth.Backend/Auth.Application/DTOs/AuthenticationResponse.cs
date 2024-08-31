@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
 namespace Auth.Application.DTOs
 {
@@ -33,6 +31,9 @@ namespace Auth.Application.DTOs
 
     public class AccessToken
     {
+        [JsonPropertyName("Refresh_Token")]
+        public string Refresh_Token { get; set; }
+
         [JsonPropertyName("jwt")]
         public string Jwt { get; set; }
 

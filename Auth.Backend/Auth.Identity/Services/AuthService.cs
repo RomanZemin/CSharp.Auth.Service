@@ -7,6 +7,7 @@ using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Helpers;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
+using Auth.Infrastructure.Identity.Services.JWT;
 
 namespace Auth.Infrastructure.Identity.Services
 {
@@ -30,6 +31,9 @@ namespace Auth.Infrastructure.Identity.Services
 
             // Retrieve the user information after the sign-in attempt
             ApplicationUser user = await _userManager.FindByEmailAsync(request.Email);
+
+            user.JWT_Token = JWTService.GenerateJwtToken(user);
+            user.Expires_At = DateTime.UtcNow.AddHours(1).ToString("O");
 
             // Create a dummy IdentityResult since we don't have one from SignInManager
             var identityResult = new IdentityResult();
@@ -71,7 +75,8 @@ namespace Auth.Infrastructure.Identity.Services
             ApplicationUser user = new ApplicationUser
             {
                 Email = request.Email,
-                UserName = request.UserName
+                UserName = request.UserName,
+                Refresh_Token = JWTService.GenerateRefreshToken()
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
@@ -92,7 +97,7 @@ namespace Auth.Infrastructure.Identity.Services
             }
 
             // If sign-up fails, return result with the error messages
-            return result.ToAuthenticationResponse(null, null);
+            return result.ToAuthenticationResponse(null, user);
 
         }
 
