@@ -49,7 +49,7 @@ namespace Auth.Infrastructure.Identity.Services.JWT
         public string RefreshToken(string refreshToken, ApplicationUser user)
         {
             // Проверяем, существует ли refreshToken в хранилище
-            if (_refreshTokens.TryGetValue(refreshToken, out string storedToken) && storedToken == refreshToken)
+            if (_refreshTokens.TryGetValue(refreshToken, out string? storedToken) && storedToken == refreshToken)
             {
                 // Удаляем использованный refreshToken из хранилища
                 _refreshTokens.TryRemove(refreshToken, out _);
