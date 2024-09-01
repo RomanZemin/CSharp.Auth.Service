@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.application\\interfaces\\identity\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|solutionrelative:auth.application\\interfaces\\identity\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.identity\\services\\jwt\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|solutionrelative:auth.identity\\services\\jwt\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.application\\usecases\\refreshtokenusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|solutionrelative:auth.application\\usecases\\refreshtokenusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.application\\usecases\\generatetokenusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFF66866-C6F9-4621-A9E5-0FCD90523B87}|Auth.Application\\Auth.Application.csproj|solutionrelative:auth.application\\usecases\\generatetokenusecase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.identity\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F74F13BB-0AF4-4BEF-9CE0-35BDA490D4BD}|Auth.Identity\\Auth.Identity.csproj|solutionrelative:auth.identity\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51749993-A21A-4BB7-B60A-FB1CFA15955A}|Auth.Domain\\Auth.Domain.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.domain\\token\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51749993-A21A-4BB7-B60A-FB1CFA15955A}|Auth.Domain\\Auth.Domain.csproj|solutionrelative:auth.domain\\token\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51749993-A21A-4BB7-B60A-FB1CFA15955A}|Auth.Domain\\Auth.Domain.csproj|c:\\users\\mvide\\source\\repos\\csharp.auth.service\\auth.backend\\auth.domain\\token\\claims.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51749993-A21A-4BB7-B60A-FB1CFA15955A}|Auth.Domain\\Auth.Domain.csproj|solutionrelative:auth.domain\\token\\claims.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,25 +70,91 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "IJWTService.cs",
+              "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Interfaces\\Identity\\IJWTService.cs",
+              "RelativeDocumentMoniker": "Auth.Application\\Interfaces\\Identity\\IJWTService.cs",
+              "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Interfaces\\Identity\\IJWTService.cs",
+              "RelativeToolTip": "Auth.Application\\Interfaces\\Identity\\IJWTService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:47:21.463Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RefreshTokenUseCase.cs",
+              "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\UseCases\\RefreshTokenUseCase.cs",
+              "RelativeDocumentMoniker": "Auth.Application\\UseCases\\RefreshTokenUseCase.cs",
+              "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\UseCases\\RefreshTokenUseCase.cs",
+              "RelativeToolTip": "Auth.Application\\UseCases\\RefreshTokenUseCase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:31:40.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GenerateTokenUseCase.cs",
+              "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\UseCases\\GenerateTokenUseCase.cs",
+              "RelativeDocumentMoniker": "Auth.Application\\UseCases\\GenerateTokenUseCase.cs",
+              "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\UseCases\\GenerateTokenUseCase.cs",
+              "RelativeToolTip": "Auth.Application\\UseCases\\GenerateTokenUseCase.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:31:29.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Claims.cs",
+              "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Token\\Claims.cs",
+              "RelativeDocumentMoniker": "Auth.Domain\\Token\\Claims.cs",
+              "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Token\\Claims.cs",
+              "RelativeToolTip": "Auth.Domain\\Token\\Claims.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:13:34.827Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RefreshToken.cs",
+              "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Token\\RefreshToken.cs",
+              "RelativeDocumentMoniker": "Auth.Domain\\Token\\RefreshToken.cs",
+              "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Domain\\Token\\RefreshToken.cs",
+              "RelativeToolTip": "Auth.Domain\\Token\\RefreshToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T14:13:29.426Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\AuthService.cs",
               "RelativeDocumentMoniker": "Auth.Identity\\Services\\AuthService.cs",
               "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\AuthService.cs",
               "RelativeToolTip": "Auth.Identity\\Services\\AuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAI4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T06:56:28.037Z"
+              "WhenOpened": "2024-08-31T06:56:28.037Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "JWTService.cs",
               "DocumentMoniker": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\JWT\\JWTService.cs",
               "RelativeDocumentMoniker": "Auth.Identity\\Services\\JWT\\JWTService.cs",
               "ToolTip": "C:\\Users\\mvide\\source\\repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Identity\\Services\\JWT\\JWTService.cs",
               "RelativeToolTip": "Auth.Identity\\Services\\JWT\\JWTService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T14:46:45.626Z",
               "EditorCaption": ""

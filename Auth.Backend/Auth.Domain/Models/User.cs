@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Auth.Infrastructure.Identity.Models
+﻿namespace Auth.Domain.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class User : IUser
     {
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

@@ -2,7 +2,7 @@
 using Auth.Application.Interfaces.Identity;
 using Auth.Infrastructure.Identity.Helpers;
 using Auth.Infrastructure.Identity.Models;
-using Auth.Infrastructure.Identity.Services.JWT;
+using Auth.Infrastructure.Identity.Services.JWTService;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -16,12 +16,13 @@ namespace Auth.Infrastructure.Identity.Services
         private readonly IMapper _mapper;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-
+        private readonly JWTService _JWTService;
         public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
+            _JWTService = new JWTService();
         }
 
         public async Task<AuthenticationResponse> SignInAsync(SignInRequest request)
@@ -32,7 +33,7 @@ namespace Auth.Infrastructure.Identity.Services
             // Retrieve the user information after the sign-in attempt
             ApplicationUser user = await _userManager.FindByEmailAsync(request.Email);
 
-            user.JWT_Token = JWTService.GenerateJwtToken(user);
+            user.JWT_Token = _JWTService.GenerateJwtToken(user);
             user.Expires_At = DateTime.UtcNow.AddHours(1).ToString("O");
 
             // Create a dummy IdentityResult since we don't have one from SignInManager
@@ -76,7 +77,7 @@ namespace Auth.Infrastructure.Identity.Services
             {
                 Email = request.Email,
                 UserName = request.UserName,
-                Refresh_Token = JWTService.GenerateRefreshToken()
+                Refresh_Token = _JWTService.GenerateRefreshToken()
             };
 
             IdentityResult result = await _userManager.CreateAsync(user, request.Password);
