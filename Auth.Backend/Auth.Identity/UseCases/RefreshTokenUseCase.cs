@@ -1,6 +1,5 @@
-﻿using Auth.Application.Interfaces;
-using Auth.Application.Interfaces.Identity;
-using Auth.Domain.Models;
+﻿using Auth.Infrastructure.Identity.Interfaces;
+using Auth.Infrastructure.Identity.Models;
 
 namespace Auth.Application.UseCases
 {
@@ -13,7 +12,7 @@ namespace Auth.Application.UseCases
             _jwtService = jwtService;
         }
 
-        public string Execute(string refreshToken, IUser user)
+        public string Execute(string refreshToken, ApplicationUser user)
         {
             return _jwtService.RefreshToken(refreshToken, user);
         }

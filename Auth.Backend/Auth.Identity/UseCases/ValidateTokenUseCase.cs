@@ -1,5 +1,4 @@
-﻿using Auth.Application.Interfaces;
-using Auth.Application.Interfaces.Identity;
+﻿using Auth.Infrastructure.Identity.Interfaces;
 
 namespace Auth.Application.UseCases
 {

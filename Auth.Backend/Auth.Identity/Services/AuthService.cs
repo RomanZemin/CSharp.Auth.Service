@@ -2,7 +2,7 @@
 using Auth.Application.Interfaces.Identity;
 using Auth.Infrastructure.Identity.Helpers;
 using Auth.Infrastructure.Identity.Models;
-using Auth.Infrastructure.Identity.Services.JWTService;
+using Auth.Infrastructure.Identity.Services.JWT;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
@@ -17,12 +17,17 @@ namespace Auth.Infrastructure.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JWTService _JWTService;
+
+        private const string SecretKey = "881d43375578e3020726f4d36a5e779d40d3f972e1f3000090567237bca693bb61e4a339df26d38e98561ce5ed8b82f50d4e299a08ee07638c3a197c6c97f7dc";
+        private const string Issuer = "WebMonsters";
+        private const string Audience = "http://localhost:5250/api";
+
         public AuthService(IMapper mapper, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _mapper = mapper;
             _userManager = userManager;
             _signInManager = signInManager;
-            _JWTService = new JWTService();
+            _JWTService = new JWTService(SecretKey, Issuer, Audience);
         }
 
         public async Task<AuthenticationResponse> SignInAsync(SignInRequest request)
@@ -33,11 +38,15 @@ namespace Auth.Infrastructure.Identity.Services
             // Retrieve the user information after the sign-in attempt
             ApplicationUser user = await _userManager.FindByEmailAsync(request.Email);
 
-            user.JWT_Token = _JWTService.GenerateJwtToken(user);
-            user.Expires_At = DateTime.UtcNow.AddHours(1).ToString("O");
+            if (user != null)
+            {
+                // Generate JWT token for the user
+                user.JWT_Token = _JWTService.GenerateJwtToken(user);
+                user.Expires_At = DateTime.UtcNow.AddHours(1).ToString("O");
+            }
 
             // Create a dummy IdentityResult since we don't have one from SignInManager
-            var identityResult = new IdentityResult();
+            var identityResult = IdentityResult.Success; // Assume the identity result is success for now
 
             // Generate the AuthenticationResponse using the combined method
             return identityResult.ToAuthenticationResponse(signInResult, user);
@@ -99,7 +108,6 @@ namespace Auth.Infrastructure.Identity.Services
 
             // If sign-up fails, return result with the error messages
             return result.ToAuthenticationResponse(null, user);
-
         }
 
         public async Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal principal, string currentPassword, string newPassword)

@@ -2,49 +2,53 @@
 using Auth.Application.Interfaces.Identity;
 using Auth.Domain.Models;
 using Auth.Domain.Token;
-using Auth.Infrastructure.Identity.Services.JWTService;
-using System;
+using Auth.Infrastructure.Identity.Models;
+using Auth.Infrastructure.Identity.Interfaces;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 
-namespace Auth.Identity.Services.JWT
+namespace Auth.Infrastructure.Identity.Services.JWT
 {
     public class JWTService : IJWTService
     {
-        private readonly JWTSettings _jwtSettings;
+
+        private readonly string _secretKey;
+        private readonly string _issuer;
+        private readonly string _audience;
+
         private static readonly ConcurrentDictionary<string, RefreshToken> _refreshTokens = new ConcurrentDictionary<string, RefreshToken>();
 
-        public JWTService(JWTSettings jwtSettings)
+        public JWTService(string secretKey, string issuer, string audience)
         {
-            _jwtSettings = jwtSettings;
+            _secretKey = secretKey;
+            _issuer = issuer;
+            _audience = audience;
         }
 
-        public string GenerateJwtToken(IUser user)
+        public string GenerateJwtToken(ApplicationUser user)
         {
-            // Обратите внимание на правильное использование ClaimTypes
             var claims = new[]
             {
-                new Claim(Domain.Token.ClaimTypes.NameIdentifier, user.Id), // Обновлено
-                new Claim(Domain.Token.ClaimTypes.Email, user.Email), // Обновлено
-                new Claim(Domain.Token.ClaimTypes.UserId, user.Id), // Обновлено
-                new Claim(Domain.Token.ClaimTypes.Name, Guid.NewGuid().ToString()) // Обновлено
-            };
+            new Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id), // Обновлено
+            new Claim(System.Security.Claims.ClaimTypes.Email, user.Email), // Обновлено
+            new Claim(Auth.Domain.Token.ClaimTypes.UserId, user.Id), // Обновлено
+            new Claim(Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString()), // Обновлено
+        };
 
             var payload = new Dictionary<string, object>
-            {
-                { "iss", _jwtSettings.Issuer },
-                { "aud", _jwtSettings.Audience },
-                { "exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds() },
-                { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
-                { "sub", user.Id },
-                { "email", user.Email },
-                { Domain.Token.ClaimTypes.Name, Guid.NewGuid().ToString() },
-                { Domain.Token.ClaimTypes.UserId, user.Id }
-            };
+        {
+            { "iss", _issuer },
+            { "aud", _audience },
+            { "exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds() },
+            { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
+            { "sub", user.Id },
+            { "email", user.Email },
+            { Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString() },
+            { Auth.Domain.Token.ClaimTypes.UserId, user.Id }
+        };
 
             var headerJson = JsonSerializer.Serialize(new { alg = "HS256", typ = "JWT" });
             var payloadJson = JsonSerializer.Serialize(payload);
@@ -52,11 +56,12 @@ namespace Auth.Identity.Services.JWT
             var headerEncoded = Base64UrlEncode(Encoding.UTF8.GetBytes(headerJson));
             var payloadEncoded = Base64UrlEncode(Encoding.UTF8.GetBytes(payloadJson));
 
-            var signature = ComputeHmacSha256($"{headerEncoded}.{payloadEncoded}", Encoding.UTF8.GetBytes(_jwtSettings.SecretKey));
+            var signature = ComputeHmacSha256($"{headerEncoded}.{payloadEncoded}", Encoding.UTF8.GetBytes(_secretKey));
             var signatureEncoded = Base64UrlEncode(signature);
 
             return $"{headerEncoded}.{payloadEncoded}.{signatureEncoded}";
         }
+
 
         public string GenerateRefreshToken()
         {
@@ -70,7 +75,7 @@ namespace Auth.Identity.Services.JWT
             return refreshToken;
         }
 
-        public string RefreshToken(string refreshToken, IUser user)
+        public string RefreshToken(string refreshToken, ApplicationUser user)
         {
             if (_refreshTokens.TryGetValue(refreshToken, out var tokenObject) && tokenObject.Expiry > DateTime.UtcNow)
             {
@@ -102,7 +107,7 @@ namespace Auth.Identity.Services.JWT
             var payload = parts[1];
             var signature = parts[2];
 
-            var key = Encoding.UTF8.GetBytes(_jwtSettings.SecretKey);
+            var key = Encoding.UTF8.GetBytes(_secretKey);
             var computedSignature = ComputeHmacSha256($"{header}.{payload}", key);
             var computedSignatureEncoded = Base64UrlEncode(computedSignature);
 

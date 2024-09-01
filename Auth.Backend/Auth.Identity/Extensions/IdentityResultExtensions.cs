@@ -1,6 +1,5 @@
 ﻿using Auth.Application.DTOs;
 using Auth.Infrastructure.Identity.Models;
-using Auth.Infrastructure.Identity.Services.JWT;
 using Microsoft.AspNetCore.Identity;
 
 namespace Auth.Infrastructure.Identity.Helpers
