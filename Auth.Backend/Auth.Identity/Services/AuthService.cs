@@ -1,13 +1,13 @@
 ﻿using Auth.Application.DTOs;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using AutoMapper;
 using Auth.Application.Interfaces.Identity;
-using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Helpers;
-using Microsoft.AspNetCore.WebUtilities;
-using System.Text;
+using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Services.JWT;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
+using System.Security.Claims;
+using System.Text;
 
 namespace Auth.Infrastructure.Identity.Services
 {

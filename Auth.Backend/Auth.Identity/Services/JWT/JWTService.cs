@@ -1,9 +1,9 @@
 ﻿using Auth.Infrastructure.Identity.Models;
-using System.Security.Claims;
-using System.Text;
-using System.Security.Cryptography;
 using System.Collections.Concurrent;
 using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.Json;
 
 namespace Auth.Infrastructure.Identity.Services.JWT
