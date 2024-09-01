@@ -271,3 +271,8 @@ C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debu
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\obj\Debug\net8.0\Auth.Web.815BEDEC.Up2Date
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\obj\Debug\net8.0\Auth.WebAPI.Tests.genruntimeconfig.cache
 C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\obj\Debug\net8.0\ref\Auth.WebAPI.Tests.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\mvide\Source\Repos\CSharp.Auth.Service\Auth.Backend\Auth.Tests\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
