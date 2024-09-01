@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Auth.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14bdd9a3b8b44383ff1340a5b36e05f6948c1f96")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bb7cc61f97771aaad5e8b60603aad58980ab3e3")]
 [assembly: System.Reflection.AssemblyProductAttribute("Auth.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Auth.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
