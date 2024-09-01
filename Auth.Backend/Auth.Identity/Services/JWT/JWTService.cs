@@ -28,10 +28,10 @@ namespace Auth.Identity.Services.JWT
             // Обратите внимание на правильное использование ClaimTypes
             var claims = new[]
             {
-                new Claim(ClaimTypes.NameIdentifier, user.Id), // Обновлено
-                new Claim(ClaimTypes.Email, user.Email), // Обновлено
-                new Claim(ClaimTypes.UserId, user.Id), // Обновлено
-                new Claim(ClaimTypes.Name, Guid.NewGuid().ToString()) // Обновлено
+                new Claim(Domain.Token.ClaimTypes.NameIdentifier, user.Id), // Обновлено
+                new Claim(Domain.Token.ClaimTypes.Email, user.Email), // Обновлено
+                new Claim(Domain.Token.ClaimTypes.UserId, user.Id), // Обновлено
+                new Claim(Domain.Token.ClaimTypes.Name, Guid.NewGuid().ToString()) // Обновлено
             };
 
             var payload = new Dictionary<string, object>
@@ -42,8 +42,8 @@ namespace Auth.Identity.Services.JWT
                 { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
                 { "sub", user.Id },
                 { "email", user.Email },
-                { ClaimTypes.Name, Guid.NewGuid().ToString() },
-                { ClaimTypes.UserId, user.Id }
+                { Domain.Token.ClaimTypes.Name, Guid.NewGuid().ToString() },
+                { Domain.Token.ClaimTypes.UserId, user.Id }
             };
 
             var headerJson = JsonSerializer.Serialize(new { alg = "HS256", typ = "JWT" });
