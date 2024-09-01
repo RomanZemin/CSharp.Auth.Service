@@ -1,10 +1,10 @@
-﻿using Auth.Infrastructure.Persistence.Repositories;
+﻿using Auth.Application.Interfaces.Persistence;
+using Auth.Infrastructure.Persistence.Data;
+using Auth.Infrastructure.Persistence.Interceptors;
+using Auth.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Auth.Application.Interfaces.Persistence;
-using Auth.Infrastructure.Persistence.Data;
-using Auth.Infrastructure.Persistence.Interceptors;
 
 namespace Auth.Infrastructure.Persistence.Extensions
 {

@@ -14,7 +14,10 @@ namespace Auth.Infrastructure.Persistence.Repositories
             _appContext = appContext;
         }
 
-        public async Task<T> FirstOrDefaultAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes)
+        public async Task<T?> FirstOrDefaultAsync(
+            Expression<Func<T, bool>>? filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = _appContext.Set<T>();
 
@@ -36,9 +39,13 @@ namespace Auth.Infrastructure.Persistence.Repositories
             return await query.FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
+
         public async Task<IEnumerable<T>> GetAllAsync() => await _appContext.Set<T>().ToListAsync();
 
-        public async Task<IEnumerable<T>> GetAllAsync(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderBy = null, params Expression<Func<T, object>>[] includes)
+        public async Task<IEnumerable<T>> GetAllAsync(
+            Expression<Func<T, bool>>? filter = null,
+            Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
+            params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = _appContext.Set<T>();
 
@@ -60,9 +67,10 @@ namespace Auth.Infrastructure.Persistence.Repositories
             return await query.ToListAsync().ConfigureAwait(false);
         }
 
+
         public async Task<IEnumerable<T>> GetWhereAsync(Expression<Func<T, bool>> filter) => await _appContext.Set<T>().Where(filter).ToListAsync();
 
-        public async Task<T> GetByIdAsync(Guid id) => await _appContext.Set<T>().FindAsync(id);
+        public async Task<T?> GetByIdAsync(Guid id) => await _appContext.Set<T>().FindAsync(id);
 
         public void Add(T entity) => _appContext.Set<T>().Add(entity);
 

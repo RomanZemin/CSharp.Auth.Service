@@ -36,7 +36,7 @@ namespace Auth.Infrastructure.Identity.Services
             SignInResult signInResult = await _signInManager.PasswordSignInAsync(request.Email, request.Password, request.RememberMe, false);
 
             // Retrieve the user information after the sign-in attempt
-            ApplicationUser user = await _userManager.FindByEmailAsync(request.Email);
+            ApplicationUser? user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user != null)
             {
@@ -57,20 +57,20 @@ namespace Auth.Infrastructure.Identity.Services
             await _signInManager.SignOutAsync();
         }
 
-        public async Task<ApplicationUserDto> GetCurrentUserAsync(ClaimsPrincipal principal)
+        public async Task<ApplicationUserDto?> GetCurrentUserAsync(ClaimsPrincipal principal)
         {
             if (principal == null)
             {
                 return null;
             }
 
-            string userId = _userManager.GetUserId(principal);
+            string? userId = _userManager.GetUserId(principal);
             if (string.IsNullOrEmpty(userId))
             {
                 return null;
             }
 
-            ApplicationUser user = await _userManager.FindByIdAsync(userId);
+            ApplicationUser? user = await _userManager.FindByIdAsync(userId);
 
             if (user == null)
             {
@@ -82,6 +82,7 @@ namespace Auth.Infrastructure.Identity.Services
 
         public async Task<AuthenticationResponse> SignUpAsync(SignUpRequest request)
         {
+            // Create the user
             ApplicationUser user = new ApplicationUser
             {
                 Email = request.Email,
@@ -89,30 +90,38 @@ namespace Auth.Infrastructure.Identity.Services
                 Refresh_Token = _JWTService.GenerateRefreshToken()
             };
 
-            IdentityResult result = await _userManager.CreateAsync(user, request.Password);
+            // Default IdentityResult as Success to avoid nullability issues
+            IdentityResult result = IdentityResult.Success;
 
-            if (result.Succeeded) // if Creating user is successful
+            if (request.Password != null)
             {
-                // Perform auto sign-in upon successful registration
-                var signInRequest = new SignInRequest
+                // Attempt to create the user
+                result = await _userManager.CreateAsync(user, request.Password);
+
+                if (result.Succeeded)
                 {
-                    Email = request.Email,
-                    Password = request.Password,
-                    RememberMe = true
-                };
+                    // Auto sign-in upon successful registration
+                    var signInRequest = new SignInRequest
+                    {
+                        Email = request.Email,
+                        Password = request.Password,
+                        RememberMe = request.RememberMe.GetValueOrDefault(true) // Default to true if null
+                    };
 
-                AuthenticationResponse signInResult = await SignInAsync(signInRequest); //sign into user
+                    AuthenticationResponse signInResult = await SignInAsync(signInRequest);
 
-                return signInResult;
+                    return signInResult;
+                }
             }
-
-            // If sign-up fails, return result with the error messages
+            // Return result with the error messages if sign-up fails
             return result.ToAuthenticationResponse(null, user);
         }
 
+
         public async Task<AuthenticationResponse> ChangePasswordAsync(ClaimsPrincipal principal, string currentPassword, string newPassword)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(principal);
+
+            ApplicationUser? user = await _userManager.GetUserAsync(principal);
 
             if (user == null)
             {
@@ -130,7 +139,7 @@ namespace Auth.Infrastructure.Identity.Services
 
         public async Task<AuthenticationResponse> ResetPasswordAsync(ResetPasswordRequest request)
         {
-            ApplicationUser user = await _userManager.FindByEmailAsync(request.UserEmail);
+            ApplicationUser? user = await _userManager.FindByEmailAsync(request.UserEmail);
 
             if (user == null)
             {
@@ -148,7 +157,7 @@ namespace Auth.Infrastructure.Identity.Services
 
         public async Task<TokenResponse> GeneratePasswordResetTokenAsync(string email)
         {
-            ApplicationUser user = await _userManager.FindByEmailAsync(email);
+            ApplicationUser? user = await _userManager.FindByEmailAsync(email);
 
             if (user == null)
             {
@@ -164,13 +173,13 @@ namespace Auth.Infrastructure.Identity.Services
             return new TokenResponse
             {
                 Succeeded = true,
-                Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token))
+                Token = token == null ? string.Empty : WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token))
             };
         }
 
         public async Task<TokenResponse> GenerateEmailConfirmationAsync(ClaimsPrincipal principal)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(principal);
+            ApplicationUser? user = await _userManager.GetUserAsync(principal);
 
             if (user == null)
             {
@@ -187,13 +196,13 @@ namespace Auth.Infrastructure.Identity.Services
             {
                 Succeeded = true,
                 UserId = user.Id,
-                Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code))
+                Token = code == null ? string.Empty : WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code))
             };
         }
 
         public async Task<AuthenticationResponse> ConfirmEmailAsync(EmailConfirmationRequest request)
         {
-            ApplicationUser user = await _userManager.FindByIdAsync(request.UserId);
+            ApplicationUser? user = await _userManager.FindByIdAsync(request.UserId);
 
             if (user == null)
             {
@@ -213,7 +222,7 @@ namespace Auth.Infrastructure.Identity.Services
 
         public async Task RefreshSignInAsync(ClaimsPrincipal principal)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(principal);
+            ApplicationUser? user = await _userManager.GetUserAsync(principal);
 
             if (user != null)
             {
@@ -223,7 +232,7 @@ namespace Auth.Infrastructure.Identity.Services
 
         public async Task<TokenResponse> GenerateEmailChangeAsync(ClaimsPrincipal principal, string newEmail)
         {
-            ApplicationUser user = await _userManager.GetUserAsync(principal);
+            ApplicationUser? user = await _userManager.GetUserAsync(principal);
 
             if (user == null)
             {
@@ -239,7 +248,7 @@ namespace Auth.Infrastructure.Identity.Services
             return new TokenResponse
             {
                 Succeeded = true,
-                Token = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token)),
+                Token = token == null ? string.Empty : WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token)),
                 UserId = user.Id
             };
         }

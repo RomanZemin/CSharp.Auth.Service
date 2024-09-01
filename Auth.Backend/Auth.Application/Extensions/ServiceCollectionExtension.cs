@@ -1,9 +1,9 @@
 ﻿using Auth.Application.Interfaces.Application;
 using Auth.Application.Mapper;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
 
 namespace Auth.Application.Extensions
 {

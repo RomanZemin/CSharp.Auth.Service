@@ -1,6 +1,6 @@
-﻿using AutoMapper;
-using Auth.Application.DTOs;
+﻿using Auth.Application.DTOs;
 using Auth.Infrastructure.Identity.Models;
+using AutoMapper;
 
 namespace Auth.Infrastructure.Identity.Mapper
 {

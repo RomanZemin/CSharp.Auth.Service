@@ -1,7 +1,7 @@
-﻿using Moq;
-using Microsoft.Extensions.Logging;
+﻿using Auth.Application.Interfaces.Identity;
 using Auth.WebAPI.Controllers;
-using Auth.Application.Interfaces.Identity;
+using Microsoft.Extensions.Logging;
+using Moq;
 
 namespace Auth.WebAPI.Tests.Controllers
 {

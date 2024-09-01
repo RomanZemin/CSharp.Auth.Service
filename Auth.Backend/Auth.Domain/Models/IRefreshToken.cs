@@ -2,7 +2,7 @@
 {
     public interface IRefreshToken
     {
-        string Token { get; }
+        string? Token { get; }
         DateTime Expiry { get; }
     }
 }

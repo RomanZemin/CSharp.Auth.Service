@@ -5,12 +5,12 @@ namespace Auth.Application.DTOs
     public class ResetPasswordRequest
     {
         [JsonPropertyName("userEmail")]
-        public string UserEmail { get; set; }
+        public required string UserEmail { get; set; }
 
         [JsonPropertyName("token")]
-        public string Token { get; set; }
+        public string? Token { get; set; }
 
         [JsonPropertyName("newPassword")]
-        public string NewPassword { get; set; }
+        public required string NewPassword { get; set; }
     }
 }

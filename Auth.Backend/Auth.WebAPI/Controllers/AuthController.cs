@@ -1,6 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using Auth.Application.DTOs;
 using Auth.Application.Interfaces.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -33,7 +33,7 @@ namespace Auth.WebAPI.Controllers
 
                 if (!response.Succeeded)
                 {
-                    
+
                     return BadRequest(response?.Errors);
                 }
 
@@ -41,7 +41,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { ex.Message } );
+                return StatusCode(500, new { ex.Message });
             }
         }
 
@@ -57,12 +57,12 @@ namespace Auth.WebAPI.Controllers
                 {
                     return BadRequest(response?.Errors);
                 }
-                 //надо зарегаться, в случае если удалось нихуя не отправляем, затем входим, в случае если заебись возвращает результат входа, если нет то пизда
+                //надо зарегаться, в случае если удалось нихуя не отправляем, затем входим, в случае если заебись возвращает результат входа, если нет то пизда
                 return Ok(response);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { ex.Message } );
+                return StatusCode(500, new { ex.Message });
             }
         }
 
@@ -92,7 +92,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { ex.Message } );
+                return StatusCode(500, new { ex.Message });
             }
         }
 
@@ -114,7 +114,7 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { ex.Message } );
+                return StatusCode(500, new { ex.Message });
             }
         }
 
@@ -130,21 +130,25 @@ namespace Auth.WebAPI.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { ex.Message } );
+                return StatusCode(500, new { ex.Message });
             }
         }
 
         [HttpGet("whoami")]
         public IActionResult WhoAmI()
         {
-            if (User.Identity.IsAuthenticated)
+            if (User.Identity != null)
             {
-                return Ok(new { User.Identity.Name } );
+                if (User.Identity.IsAuthenticated)
+                {
+                    return Ok(new { User.Identity.Name });
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
-            else
-            {
-                return Unauthorized();
-            }
+            else return Unauthorized();
         }
     }
 }

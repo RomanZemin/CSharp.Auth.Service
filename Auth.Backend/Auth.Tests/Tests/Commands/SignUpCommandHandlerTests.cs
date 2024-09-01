@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Auth.Application.DTOs;
+﻿using Auth.Application.DTOs;
 using Auth.WebAPI.Tests.Controllers;
+using Microsoft.AspNetCore.Mvc;
 using Moq;
 
 namespace Auth.WebAPI.Tests.Commands

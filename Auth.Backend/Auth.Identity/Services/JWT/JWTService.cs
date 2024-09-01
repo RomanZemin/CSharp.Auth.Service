@@ -1,9 +1,7 @@
-﻿using Auth.Application.Interfaces;
-using Auth.Application.Interfaces.Identity;
-using Auth.Domain.Models;
+﻿using Auth.Domain.Models;
 using Auth.Domain.Token;
-using Auth.Infrastructure.Identity.Models;
 using Auth.Infrastructure.Identity.Interfaces;
+using Auth.Infrastructure.Identity.Models;
 using System.Collections.Concurrent;
 using System.Security.Claims;
 using System.Security.Cryptography;
@@ -32,10 +30,10 @@ namespace Auth.Infrastructure.Identity.Services.JWT
         {
             var claims = new[]
             {
-            new Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id), // Обновлено
-            new Claim(System.Security.Claims.ClaimTypes.Email, user.Email), // Обновлено
-            new Claim(Auth.Domain.Token.ClaimTypes.UserId, user.Id), // Обновлено
-            new Claim(Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString()), // Обновлено
+            new Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id ?? string.Empty),
+        new Claim(System.Security.Claims.ClaimTypes.Email, user.Email ?? string.Empty),
+        new Claim(Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty),
+        new Claim(Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString()),
         };
 
             var payload = new Dictionary<string, object>
@@ -44,10 +42,10 @@ namespace Auth.Infrastructure.Identity.Services.JWT
             { "aud", _audience },
             { "exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds() },
             { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
-            { "sub", user.Id },
-            { "email", user.Email },
+            { "sub", user.Id ?? string.Empty },
+            { "email", user.Email ?? string.Empty },
             { Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString() },
-            { Auth.Domain.Token.ClaimTypes.UserId, user.Id }
+            { Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty }
         };
 
             var headerJson = JsonSerializer.Serialize(new { alg = "HS256", typ = "JWT" });

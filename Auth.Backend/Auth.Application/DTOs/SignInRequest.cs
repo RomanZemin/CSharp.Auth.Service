@@ -5,10 +5,10 @@ namespace Auth.Application.DTOs
     public class SignInRequest
     {
         [JsonPropertyName("email")]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [JsonPropertyName("password")]
-        public string Password { get; set; }
+        public required string Password { get; set; }
 
         [JsonPropertyName("RememberMe")]
         public bool RememberMe { get; set; }

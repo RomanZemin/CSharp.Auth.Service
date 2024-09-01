@@ -20,24 +20,24 @@ namespace Auth.Application.DTOs
     public class UserData
     {
         [JsonPropertyName("userId")]
-        public string UserId { get; set; }
+        public string? UserId { get; set; }
 
         [JsonPropertyName("FirstName")]
-        public string FirstName { get; set; }
+        public string? FirstName { get; set; }
 
         [JsonPropertyName("LastName")]
-        public string LastName { get; set; }
+        public string? LastName { get; set; }
     }
 
     public class AccessToken
     {
         [JsonPropertyName("Refresh_Token")]
-        public string Refresh_Token { get; set; }
+        public string? Refresh_Token { get; set; }
 
         [JsonPropertyName("jwt")]
-        public string Jwt { get; set; }
+        public string? Jwt { get; set; }
 
         [JsonPropertyName("expiresAt")]
-        public string ExpiresAt { get; set; }
+        public string? ExpiresAt { get; set; }
     }
 }

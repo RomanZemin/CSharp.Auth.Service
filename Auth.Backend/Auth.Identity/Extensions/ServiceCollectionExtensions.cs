@@ -1,13 +1,13 @@
-﻿using Auth.Infrastructure.Identity.Models;
+﻿using Auth.Application.Interfaces.Identity;
+using Auth.Infrastructure.Identity.Data;
+using Auth.Infrastructure.Identity.Mapper;
+using Auth.Infrastructure.Identity.Models;
+using Auth.Infrastructure.Identity.Services;
+using AutoMapper;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Auth.Application.Interfaces.Identity;
-using Auth.Infrastructure.Identity.Services;
-using AutoMapper;
-using Auth.Infrastructure.Identity.Mapper;
-using Auth.Infrastructure.Identity.Data;
 
 namespace Auth.Infrastructure.Identity.Extensions
 {

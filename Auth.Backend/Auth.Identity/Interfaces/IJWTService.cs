@@ -1,5 +1,4 @@
-﻿using Auth.Domain.Models;
-using Auth.Infrastructure.Identity.Models;
+﻿using Auth.Infrastructure.Identity.Models;
 
 namespace Auth.Infrastructure.Identity.Interfaces
 {

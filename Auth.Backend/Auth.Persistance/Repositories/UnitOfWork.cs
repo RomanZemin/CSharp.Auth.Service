@@ -16,14 +16,16 @@ namespace Auth.Infrastructure.Persistence.Repositories
 
         public IRepositoryBase<T> GetRepository<T>() where T : class
         {
-            if (repositories.ContainsKey(typeof(T)))
+            if (repositories.TryGetValue(typeof(T), out var repo))
             {
-                return repositories[typeof(T)] as IRepositoryBase<T>;
+                // Use a safe cast and ensure type correctness
+                return (IRepositoryBase<T>)repo;
             }
 
-            IRepositoryBase<T> repo = new RepositoryBase<T>(_context);
-            repositories.Add(typeof(T), repo);
-            return repo;
+            // Create and add the repository if not found
+            IRepositoryBase<T> newRepo = new RepositoryBase<T>(_context);
+            repositories.Add(typeof(T), newRepo);
+            return newRepo;
         }
 
         public async Task<bool> CompleteAsync()

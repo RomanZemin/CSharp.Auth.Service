@@ -6,24 +6,21 @@ namespace Auth.Infrastructure.Identity.Helpers
 {
     public static class IdentityResultExtensions
     {
-        public static AuthenticationResponse ToAuthenticationResponse(this IdentityResult identityResult, SignInResult signInResult, ApplicationUser? user)
+        public static AuthenticationResponse ToAuthenticationResponse(this IdentityResult identityResult, SignInResult? signInResult, ApplicationUser? user)
         {
-            // Initialize response based on IdentityResult
             var response = new AuthenticationResponse
             {
                 Succeeded = identityResult.Succeeded,
                 Errors = identityResult.Succeeded ? null : identityResult.Errors.ToDictionary(e => e.Code, e => e.Description)
             };
 
-            // Check if SignInResult is also provided and use it to update the response
             if (signInResult != null)
             {
                 response.Succeeded = signInResult.Succeeded;
-                response.Errors = signInResult.Succeeded ? null : new Dictionary<string, string>();
+                response.Errors = signInResult.Succeeded ? new Dictionary<string, string>() : new Dictionary<string, string>();
 
                 if (!signInResult.Succeeded)
                 {
-                    // Populate errors if the sign-in failed
                     if (signInResult.IsLockedOut)
                     {
                         response.Errors.Add("LockedOut", "User account is locked out.");

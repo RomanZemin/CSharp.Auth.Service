@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-namespace Auth.Domain.Token
+﻿namespace Auth.Domain.Token
 {
     public class SecurityTokenException : Exception
     {

@@ -1,5 +1,5 @@
-﻿using AutoMapper;
-using Auth.Application.Interfaces.Persistence;
+﻿using Auth.Application.Interfaces.Persistence;
+using AutoMapper;
 using System.ComponentModel.DataAnnotations;
 
 namespace Auth.Infrastructure.Persistence.Services
@@ -50,7 +50,13 @@ namespace Auth.Infrastructure.Persistence.Services
         {
             ValidateDto(dto);
 
-            TEntity entity = await _unitOfWork.GetRepository<TEntity>().GetByIdAsync(dto.Id);
+            TEntity? entity = await _unitOfWork.GetRepository<TEntity>().GetByIdAsync(dto.Id);
+
+            if (entity == null)
+            {
+                throw new ValidationException("Not found.");
+            }
+
             _mapper.Map(dto, entity);
             _unitOfWork.GetRepository<TEntity>().Update(entity);
             await _unitOfWork.CompleteAsync();
@@ -58,7 +64,7 @@ namespace Auth.Infrastructure.Persistence.Services
 
         public async Task DeleteAsync(Guid id)
         {
-            TEntity entity = await _unitOfWork.GetRepository<TEntity>().GetByIdAsync(id);
+            TEntity? entity = await _unitOfWork.GetRepository<TEntity>().GetByIdAsync(id);
 
             if (entity == null)
             {

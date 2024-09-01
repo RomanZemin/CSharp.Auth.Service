@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
+﻿using Auth.Application.Interfaces.Application;
 using Auth.Domain.Entities;
-using Auth.Application.Interfaces.Application;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace Auth.Infrastructure.Persistence.Interceptors
 {

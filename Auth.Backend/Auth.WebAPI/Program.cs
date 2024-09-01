@@ -1,9 +1,9 @@
 using Auth.Application.Extensions;
-using Auth.Infrastructure.Persistence.Extensions;
 using Auth.Infrastructure.Identity.Extensions;
+using Auth.Infrastructure.Persistence.Extensions;
 
-namespace Auth.WebAPI.Controllers 
-{ 
+namespace Auth.WebAPI.Controllers
+{
     public class Program
     {
         public static void Main(string[] args)
@@ -49,7 +49,7 @@ namespace Auth.WebAPI.Controllers
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-            
+
             app.UseCors("AllowAllOrigins");
 
             app.UseHttpsRedirection();
