@@ -20,7 +20,7 @@ namespace Auth.WebAPI.Tests.Commands
             var result = await _controller.SignUpAsync(request);
 
             // Assert
-            var actionResult = Assert.IsType<OkResult>(result.Result);
+            var actionResult = Assert.IsType<OkObjectResult>(result.Result);
             Assert.Equal(200, actionResult.StatusCode); // Verify the status code is 200
         }
 
