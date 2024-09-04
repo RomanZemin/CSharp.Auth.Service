@@ -57,7 +57,6 @@ namespace Auth.WebAPI.Controllers
                 {
                     return BadRequest(response?.Errors);
                 }
-                //надо зарегаться, в случае если удалось нихуя не отправляем, затем входим, в случае если заебись возвращает результат входа, если нет то пизда
                 return Ok(response);
             }
             catch (Exception ex)
