@@ -12,8 +12,8 @@ namespace Auth.Infrastructure.Identity.Services.JWT
             var claims = new[]
             {
                 new Claim(System.Security.Claims.ClaimTypes.NameIdentifier, user.Id ?? string.Empty),
-                new Claim(System.Security.Claims.ClaimTypes.Email, user.Email ?? string.Empty),
-                new Claim(Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty),
+                //new Claim(System.Security.Claims.ClaimTypes.Email, user.Email ?? string.Empty),
+                //new Claim(Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty),
                 new Claim(Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString()),
             };
 
@@ -24,9 +24,9 @@ namespace Auth.Infrastructure.Identity.Services.JWT
                 { "exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds() },
                 { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
                 { "sub", user.Id ?? string.Empty },
-                { "email", user.Email ?? string.Empty },
+                //{ "email", user.Email ?? string.Empty },
                 { Auth.Domain.Token.ClaimTypes.Jti, Guid.NewGuid().ToString() },
-                { Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty }
+                //{ Auth.Domain.Token.ClaimTypes.UserId, user.Id ?? string.Empty }
             };
 
             var headerJson = JsonSerializer.Serialize(new { alg = "HS256", typ = "JWT" });
