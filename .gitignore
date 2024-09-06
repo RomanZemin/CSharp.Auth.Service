@@ -121,3 +121,4 @@
 /Auth.Backend/Auth.Identity/obj/Debug/net8.0/Auth.Identity.assets.cache
 /Auth.Backend/Auth.Identity/obj/project.nuget.cache
 /Auth.Backend/Auth.Tests/obj/Debug/net8.0/Auth.WebAPI.Tests.assets.cache
+/Auth.Backend/Auth.WebAPI/bin/Debug/net8.0/appsettings.json
