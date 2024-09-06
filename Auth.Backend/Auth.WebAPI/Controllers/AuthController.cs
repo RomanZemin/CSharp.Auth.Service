@@ -2,6 +2,7 @@ using Auth.Application.DTOs;
 using Auth.Application.Interfaces.Identity;
 using Auth.Application.Interfaces.Persistence;
 using Microsoft.AspNetCore.Mvc;
+using Auth.Application.Extensions.RabbitMQ;
 
 namespace Auth.WebAPI.Controllers
 {
@@ -61,7 +62,14 @@ namespace Auth.WebAPI.Controllers
                 {
                     return BadRequest(response?.Errors);
                 }
-                await _mqService.SendMessageAsync(request.UserName);
+
+                var rabbitmqMessage = new RabbitMqMessage
+                {
+                    UserName = request.UserName,
+                    UserId = response?.Data?.UserId == null ? "" : response.Data.UserId
+                };
+
+                await _mqService.SendMessageAsync(rabbitmqMessage);
                 return Ok(response);
             }
             catch (Exception ex)
