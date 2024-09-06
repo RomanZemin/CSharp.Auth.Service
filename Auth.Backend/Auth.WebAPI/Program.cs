@@ -1,4 +1,5 @@
 using Auth.Application.Extensions;
+using Auth.Identity.Extensions;
 using Auth.Infrastructure.Identity.Extensions;
 using Auth.Infrastructure.Persistence.Extensions;
 

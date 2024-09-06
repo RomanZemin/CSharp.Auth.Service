@@ -114,5 +114,10 @@
 /Auth.Backend/Auth.WebAPI/obj/Debug/net8.0/ref/Auth.WebAPI.dll
 /Auth.Backend/Auth.WebAPI/obj/Debug/net8.0/refint/Auth.WebAPI.dll
 /Auth.Backend/.vs/Auth.Backend/v17/.futdcache.v2
-/Auth.Backend/Auth.Domain/obj/Debug/net8.0/Auth.Domain.GeneratedMSBuildEditorConfig.editorconfig
-/Auth.Backend/Auth.WebAPI/Auth.WebAPI.csproj.user
+/Auth.Backend/Auth.WebAPI/appsettings.json
+/Auth.Backend/.vs/ProjectEvaluation/auth.backend.metadata.v9.bin
+/Auth.Backend/Auth.Application/obj/Debug/net8.0/Auth.Application.csproj.CoreCompileInputs.cache
+/Auth.Backend/Auth.Domain/obj/Debug/net8.0/Auth.Domain.csproj.CoreCompileInputs.cache
+/Auth.Backend/Auth.Identity/obj/Debug/net8.0/Auth.Identity.assets.cache
+/Auth.Backend/Auth.Identity/obj/project.nuget.cache
+/Auth.Backend/Auth.Tests/obj/Debug/net8.0/Auth.WebAPI.Tests.assets.cache

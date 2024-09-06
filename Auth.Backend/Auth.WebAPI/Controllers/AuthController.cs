@@ -1,5 +1,6 @@
 using Auth.Application.DTOs;
 using Auth.Application.Interfaces.Identity;
+using Auth.Application.Interfaces.Persistence;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Auth.WebAPI.Controllers
@@ -11,15 +12,18 @@ namespace Auth.WebAPI.Controllers
         private readonly ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
         private readonly IUserService _userService;
+        private readonly IRabbitMqService _mqService;
 
         public AuthController(
             ILogger<AuthController> logger,
             IAuthService authService,
-            IUserService userService)
+            IUserService userService,
+            IRabbitMqService mqService)
         {
             _logger = logger;
             _authService = authService;
             _userService = userService;
+            _mqService = mqService;
         }
 
         [HttpPost("signin")]
@@ -57,6 +61,7 @@ namespace Auth.WebAPI.Controllers
                 {
                     return BadRequest(response?.Errors);
                 }
+                await _mqService.SendMessageAsync(request.UserName);
                 return Ok(response);
             }
             catch (Exception ex)

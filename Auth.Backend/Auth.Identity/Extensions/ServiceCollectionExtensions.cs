@@ -1,4 +1,6 @@
 ﻿using Auth.Application.Interfaces.Identity;
+using Auth.Application.Interfaces.Persistence;
+using Auth.Identity.Extensions;
 using Auth.Infrastructure.Identity.Data;
 using Auth.Infrastructure.Identity.Mapper;
 using Auth.Infrastructure.Identity.Models;
@@ -32,6 +34,8 @@ namespace Auth.Infrastructure.Identity.Extensions
         {
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IRabbitMqService, RabbitMqService>();
+            services.AddSingleton<RabbitMqConnectionService>();
         }
 
         public static void AddInfrastructureIdentityMappingProfile(this IServiceCollection services)
