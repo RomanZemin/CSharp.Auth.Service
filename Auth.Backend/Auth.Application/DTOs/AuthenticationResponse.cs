@@ -27,6 +27,8 @@ namespace Auth.Application.DTOs
 
         [JsonPropertyName("LastName")]
         public string? LastName { get; set; }
+        [JsonPropertyName("UserName")]
+        public string? UserName { get; set; }
     }
 
     public class AccessToken

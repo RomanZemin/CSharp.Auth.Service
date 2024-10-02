@@ -42,7 +42,7 @@ namespace Auth.Infrastructure.Identity.Services
             {
                 // Generate JWT token for the user
                 user.JWT_Token = _JWTService.GenerateJwtToken(user);
-                user.Expires_At = DateTime.UtcNow.AddHours(1).ToString("O");
+                user.Expires_At = DateTime.UtcNow.AddHours(24).ToString("O");
             }
 
             // Create a dummy IdentityResult since we don't have one from SignInManager

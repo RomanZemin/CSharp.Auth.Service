@@ -21,7 +21,7 @@ namespace Auth.Infrastructure.Identity.Services.JWT
             {
                 { "iss", _issuer },
                 { "aud", _audience },
-                { "exp", DateTimeOffset.UtcNow.AddHours(1).ToUnixTimeSeconds() },
+                { "exp", DateTimeOffset.UtcNow.AddHours(24).ToUnixTimeSeconds() },
                 { "iat", DateTimeOffset.UtcNow.ToUnixTimeSeconds() },
                 { "sub", user.Id ?? string.Empty },
                 //{ "email", user.Email ?? string.Empty },

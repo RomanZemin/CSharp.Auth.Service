@@ -8489,11 +8489,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
       "projectName": "Auth.WebAPI.Tests",
-      "projectPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
+      "projectPath": "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\Auth.WebAPI.Tests.csproj",
       "packagesPath": "C:\\Users\\mvide\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\obj\\",
+      "outputPath": "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -8515,11 +8515,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Auth.Application.csproj": {
-              "projectPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Auth.Application.csproj"
+            "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Auth.Application.csproj": {
+              "projectPath": "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.Application\\Auth.Application.csproj"
             },
-            "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Auth.WebAPI.csproj": {
-              "projectPath": "C:\\Users\\mvide\\Source\\Repos\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Auth.WebAPI.csproj"
+            "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Auth.WebAPI.csproj": {
+              "projectPath": "C:\\Users\\mvide\\source\\repos\\_GROSSMANN\\CSharp.Auth.Service\\Auth.Backend\\Auth.WebAPI\\Auth.WebAPI.csproj"
             }
           }
         }
